@@ -595,6 +595,11 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script>
         (function () {
+            // Função para converter índice para letra (0=A, 1=B, 2=C, 3=D)
+            function indiceParaLetra(indice) {
+                return String.fromCharCode(65 + indice);
+            }
+
             // ---------- DADOS DOS ALUNOS 3º F ----------
             const alunos = [
                 { num: 1, nome: 'EVELYN LUANE DE SENA ALVES' },
@@ -865,10 +870,13 @@
                             email: '',
                             respostas: this.respostas.map((r, idx) => {
                                 if (r.tipo === 'obj') {
+                                    // Envia: letra (A, B, C, D), descrição completa e tipo
                                     return {
                                         questao: idx + 1,
                                         tipo: 'MC',
-                                        resposta: r.escolha !== null ? this.questoes[idx].alternativas[r.escolha] : '(não respondida)'
+                                        letra: r.escolha !== null ? indiceParaLetra(r.escolha) : '',
+                                        descricao: r.escolha !== null ? this.questoes[idx].alternativas[r.escolha] : '(não respondida)',
+                                        resposta: r.escolha !== null ? `${indiceParaLetra(r.escolha)}) ${this.questoes[idx].alternativas[r.escolha]}` : '(não respondida)'
                                     };
                                 } else {
                                     return {
