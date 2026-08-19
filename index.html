@@ -468,7 +468,11 @@
                 </div>
             </div>
 
-            <div class="img-placeholder" v-if="q.icone">
+            <div class="img-placeholder" v-if="q.imagem" style="background: #f9f9f9; border: 2px solid #2ecc71; padding: 20px;">
+                <img :src="q.imagem" :alt="'Questão ' + (idx+1)" style="max-width: 100%; max-height: 400px; border-radius: 10px; display: block; margin: 0 auto;">
+            </div>
+
+            <div class="img-placeholder" v-else-if="q.icone">
                 <i :class="q.icone"></i> {{ q.descricao }}
             </div>
 
@@ -548,12 +552,15 @@
 
             // ---------- QUESTÕES ----------
             const questoes = [
-     { tema: 'Ciclos Biogeoquímicos · Aula 1', tipo: 'obj', contexto: 'O ciclo do nitrogênio é fundamental para a vida, pois o nitrogênio é um elemento essencial para a formação de proteínas e ácidos nucleicos.', pergunta: 'Qual dos seguintes elementos é essencial para a formação de proteínas em todos os seres vivos?', icone: 'fas fa-circle-dot', descricao: 'Ciclo Biogeoquímico do Nitrogênio', alternativas: ['Oxigênio (O)', 'Nitrogênio (N)', 'Fósforo (P)', 'Enxofre (S)'], correta: 1 },
-
-    correta: 1
-},
-    correta: 1
-},
+                {
+                    tema: 'Ciclos Biogeoquímicos · Aula 1',
+                    tipo: 'obj',
+                    contexto: 'O ciclo do nitrogênio é fundamental para a vida, pois o nitrogênio é um elemento essencial para a formação de proteínas e ácidos nucleicos.',
+                    pergunta: 'Qual dos seguintes elementos é essencial para a formação de proteínas em todos os seres vivos?',
+                    imagem: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgbw2SNyWQzLIRjXl9ca1cXmR5JbK9_PqqtV7hvmimxO_kMO7JE79j5Zwt5ziDW-cYVbpz507BoT16SVx0Cga5QW_QNvVUJMDUVuPp_u8Frbm8LkuwOzXeyzSJ-SgRzCpvUkuZaf88Xt-J0yJ7WvyXkz6bdiwjuGHOmiYXg5DwRFY0RBG_EPvfpikQP9wCb/s659/images.jpg',
+                    alternativas: ['Oxigênio (O)', 'Nitrogênio (N)', 'Fósforo (P)', 'Enxofre (S)'],
+                    correta: 1
+                },
                 {
                     tema: 'Interferência Humana · Aula 2',
                     tipo: 'obj',
